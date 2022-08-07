@@ -20,6 +20,7 @@
   "volta": {
     "node": "16.13.0"
   },
+  "packageManager": "pnpm@7.6.0",
   "dependencies": {
     "@changesets/cli": "^2.18.1",
     "@changesets/changelog-github": "^0.4.2"
