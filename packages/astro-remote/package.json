@@ -1,0 +1,44 @@
+{
+  "name": "astro-remote",
+  "type": "module",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/natemoo-re/astro-remote"
+  },
+  "bugs": {
+    "url": "https://github.com/natemoo-re/astro-remote/issues"
+  },
+  "homepage": "https://github.com/natemoo-re/astro-remote#README",
+  "files": [
+    "lib",
+    "index.ts",
+    "CHANGELOG.md"
+  ],
+  "types": "./index.ts",
+  "exports": {
+    ".": "./index.ts",
+    "./lib/*": "./lib/*",
+    "./package.json": "./package.json"
+  },
+  "keywords": [
+    "html",
+    "template",
+    "sanitize",
+    "astro",
+    "astro-component"
+  ],
+  "author": {
+    "name": "Nate Moore",
+    "email": "nate@natemoo.re",
+    "url": "https://twitter.com/n_moore"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "marked": "^4.0.18",
+    "ultrahtml": "^0.0.4"
+  },
+  "devDependencies": {
+    "astro": "1.0.0-rc.7"
+  }
+}
