@@ -59,8 +59,7 @@ export async function html(
   input: string,
   opts: HTMLOptions = {}
 ): Promise<string> {
-  const content = await marked.parse(dedent(input));
-  return transform(content, {
+  return transform(dedent(input), {
     sanitize: opts.sanitize,
     components: opts.components,
   });
