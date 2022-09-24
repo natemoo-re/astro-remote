@@ -17,10 +17,10 @@ importers:
     specifiers:
       astro: 1.0.0-rc.7
       marked: ^4.0.18
-      ultrahtml: ^0.0.4
+      ultrahtml: ^0.1.1
     dependencies:
       marked: 4.0.18
-      ultrahtml: 0.0.4
+      ultrahtml: 0.1.1
     devDependencies:
       astro: 1.0.0-rc.7
 
@@ -3848,8 +3848,8 @@ packages:
     hasBin: true
     dev: true
 
-  /ultrahtml/0.0.4:
-    resolution: {integrity: sha512-LcNKWPic3v5WXEmhpCwisEnhRPYg8qz00jpY9+vE/RrbbSmaxzJKLrdJgSdTdJCUf9VzwuYiGmc3G0ApfA0uiA==}
+  /ultrahtml/0.1.1:
+    resolution: {integrity: sha512-v4fJkBmJ7V6x5qVNBKCMCWmzJm1rWsAePuRWzU3AEf18MwlK6liQ+MesuRjSBKk3kUs01UtmuedgEUZuZAxk0A==}
     dev: false
 
   /unbox-primitive/1.0.2:
