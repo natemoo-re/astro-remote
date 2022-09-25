@@ -1,5 +1,11 @@
 # astro-remote
 
+## 0.2.0
+
+### Minor Changes
+
+- df3e783: Add support for custom Heading, CodeBlock, and CodeSpan components. Improve documentation.
+
 ## 0.1.0
 
 ### Minor Changes
