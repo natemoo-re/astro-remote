@@ -3,7 +3,7 @@ import { transform } from 'ultrahtml';
 import { jsx as h } from 'astro/jsx-runtime';
 import { renderJSX } from 'astro/runtime/server/jsx';
 import { __unsafeHTML } from 'ultrahtml';
-import 'he';
+import * as he from 'he';
 
 declare var he: any;
 
@@ -15,7 +15,7 @@ export function createComponentProxy(result, _components: Record<string, any> = 
     } else {
       components[key] = async (props, children) => {
         if (key === 'CodeBlock' || key === 'CodeSpan') {
-          props.code = he.decode(props.code);
+          props.code = he.decode(JSON.parse(`"${props.code}"`));
         }
         const output = await renderJSX(
           result,
@@ -66,14 +66,14 @@ export async function markdown(
       renderer.code = (code: string, meta = '') => {
         const info = meta.split(/\s+/g) ?? [];
         const lang = info[0] ?? 'plaintext';
-        const value = he.encode(code)
-        return `<CodeBlock lang=${JSON.stringify(lang)} code="${value}" ${info.splice(1).join(' ')} />`
+        const value = JSON.stringify(he.encode(code))
+        return `<CodeBlock lang=${JSON.stringify(lang)} code=${value} ${info.splice(1).join(' ')} />`
       }
     }
     if ('CodeSpan' in opts.components) {
       renderer.codespan = (code: string) => {
-        const value = he.encode(code)
-        return `<CodeSpan code="${value}">${code}</CodeSpan>`
+        const value = JSON.stringify(he.encode(code))
+        return `<CodeSpan code=${value}>${code}</CodeSpan>`
       }
     }
   }

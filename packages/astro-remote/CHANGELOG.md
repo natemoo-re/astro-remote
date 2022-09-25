@@ -1,5 +1,11 @@
 # astro-remote
 
+## 0.2.1
+
+### Patch Changes
+
+- Fix encoding issue with custom components
+
 ## 0.2.0
 
 ### Minor Changes
