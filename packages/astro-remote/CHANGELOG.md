@@ -1,5 +1,11 @@
 # astro-remote
 
+## 0.2.3
+
+### Patch Changes
+
+- 500f0e4: Fix usage of `he` module
+
 ## 0.2.2
 
 ### Patch Changes
