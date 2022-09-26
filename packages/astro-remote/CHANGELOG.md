@@ -1,5 +1,11 @@
 # astro-remote
 
+## 0.2.2
+
+### Patch Changes
+
+- 0a9e6a9: Add support for GitHub-style notes and warnings
+
 ## 0.2.1
 
 ### Patch Changes
