@@ -3,7 +3,7 @@ import { transform } from 'ultrahtml';
 import { jsx as h } from 'astro/jsx-runtime';
 import { renderJSX } from 'astro/runtime/server/jsx';
 import { __unsafeHTML } from 'ultrahtml';
-import 'he';
+import * as he from 'he';
 
 declare var he: any;
 
