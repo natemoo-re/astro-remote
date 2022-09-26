@@ -113,6 +113,22 @@ const { code } = Astro.props;
 <code set:text={code} />
 ```
 
+#### `<Note />`
+
+The `Note` component allows you customize the rendering of GitHub-style notes and warnings. It receives the following props:
+
+- `type`, either `"note"` or `"warning"`
+
+To use a `Note` component in Markdown, use the following syntax:
+
+```md
+> **Note**
+> Some tip here!
+
+> **Warning**
+> Some warning here!
+```
+
 ### Custom Components in Markdown
 
 If you'd like to allow custom components in Markdown, you can do so using a combination of the `sanitize` and `components` options. By default, sanitization removes components.

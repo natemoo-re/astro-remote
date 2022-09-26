@@ -3,7 +3,7 @@ import { transform } from 'ultrahtml';
 import { jsx as h } from 'astro/jsx-runtime';
 import { renderJSX } from 'astro/runtime/server/jsx';
 import { __unsafeHTML } from 'ultrahtml';
-import * as he from 'he';
+import 'he';
 
 declare var he: any;
 
@@ -54,8 +54,21 @@ export async function markdown(
   input: string,
   opts: HTMLOptions = {}
 ): Promise<string> {
-  const renderer: any = {};
+  const renderer: any = {}
   if (opts.components) {
+    if ('Note' in opts.components) {
+      renderer.blockquote = (text: string) => {
+        const lines = text.split('\n');
+        const ln = lines[0].replace('<p>', '');
+        if (ln === '<strong>Note</strong>') {
+          return `<Note type="note"><p>${lines.slice(1).join('\n')}</Note>`
+        }
+        if (ln === '<strong>Warning</strong>') {
+          return `<Note type="warning"><p>${lines.slice(1).join('\n')}</Note>`
+        }
+        return `<blockquote>${text}</blockquote>`
+      }
+    }
     if ('Heading' in opts.components) {
       renderer.heading = (children: string, level: number, raw: string, slugger) => {
         const slug = slugger.slug(raw);

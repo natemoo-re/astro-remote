@@ -3,10 +3,17 @@ import { Markdown, Markup } from "astro-remote";
 import CodeSpan from "../components/CodeSpan.astro";
 import CodeBlock from "../components/CodeBlock.astro";
 import Heading from "../components/Heading.astro";
+import Note from "../components/Note.astro";
 
 const example = await fetch("https://example.com/").then((res) => res.text());
 const readme = `
 # Hello \`world\`
+
+> **Note**
+> Some note
+
+> **Warning**
+> Some warning
 
 "Nice"
 
@@ -43,7 +50,7 @@ const readme = `
       <h1>Markdown</h1>
       <Markdown
         content={readme}
-        components={{ Heading, CodeBlock, CodeSpan }}
+        components={{ Heading, CodeBlock, CodeSpan, Note }}
       />
     </div>
   </body>
