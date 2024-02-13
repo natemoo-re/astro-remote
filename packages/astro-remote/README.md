@@ -4,6 +4,14 @@ Render remote HTML or Markdown content in Astro with full control over the outpu
 
 Powered by [`ultrahtml`](https://github.com/natemoo-re/ultrahtml) and [`marked`](https://github.com/markedjs/marked).
 
+## Install
+
+```sh
+npm install astro-remote
+pnpm install astro-remote
+yarn install astro-remote
+```
+
 ## Rendering Remote Content
 
 The most basic function of `astro-remote` is to convert a string of HTML or Markdown to HTML. Use the `Markup` and `Markdown` components depending on your input.
