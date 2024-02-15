@@ -4,8 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "pnpm --filter demo run dev",
-    "lint": "prettier \"**/*.{js,ts,md,json}\""
+    "dev": "pnpm --filter playground dev",
+    "lint": "prettier \"**/*.{js,ts,md,json}\"",
+    "lint:biome": "biome check .",
+    "lint:biome:fix": "biome check --apply ."
   },
   "repository": {
     "type": "git",
@@ -18,7 +20,10 @@
   },
   "homepage": "https://github.com/natemoo-re/astro-remote#readme",
   "volta": {
-    "node": "18.16.0"
+    "node": "18.19.0"
+  },
+  "engines": {
+    "node": ">=18.19.0"
   },
   "packageManager": "pnpm@8.15.3",
   "dependencies": {
@@ -26,6 +31,7 @@
     "@changesets/changelog-github": "^0.4.2"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.5.3",
     "prettier": "^2.5.0"
   }
 }
