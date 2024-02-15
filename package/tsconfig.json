@@ -1,6 +1,3 @@
 {
-  "extends": "astro/tsconfigs/strict",
-  "compilerOptions": {
-    "jsx": "preserve",
-  },
+  "extends": "astro/tsconfigs/strict".
 }
