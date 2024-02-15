@@ -1,5 +1,6 @@
 {
   "name": "astro-remote",
+  "description": "Render remote HTML or Markdown content in Astro with full control over the output.",
   "type": "module",
   "version": "0.2.4",
   "repository": {
@@ -13,7 +14,8 @@
   "files": [
     "lib",
     "index.ts",
-    "CHANGELOG.md"
+    "CHANGELOG.md",
+    "tsconfig.json"
   ],
   "types": "./index.ts",
   "exports": {
@@ -40,6 +42,6 @@
     "ultrahtml": "^0.1.1"
   },
   "devDependencies": {
-    "astro": "1.3.0"
+    "astro": "4.0.0"
   }
 }
