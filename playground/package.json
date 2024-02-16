@@ -9,6 +9,9 @@
     "preview": "astro preview",
     "astro": "astro"
   },
+  "volta": {
+    "extends": "../package.json"
+  },
   "devDependencies": {
     "astro-remote": "workspace:*"
   },

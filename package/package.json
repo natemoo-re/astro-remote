@@ -36,10 +36,19 @@
     "url": "https://twitter.com/n_moore"
   },
   "license": "MIT",
+  "volta": {
+    "node": "18.19.0",
+    "pnpm": "8.14.1"
+  },
+  "engines": {
+    "node": ">=18.19.0"
+  },
   "dependencies": {
-    "entities": "^4.4.0",
-    "marked": "^4.0.18",
-    "ultrahtml": "^0.1.1"
+    "entities": "^4.5.0",
+    "marked": "^12.0.0",
+    "marked-footnote": "1.2.2",
+    "marked-smartypants": "1.1.6",
+    "ultrahtml": "^1.5.2"
   },
   "devDependencies": {
     "astro": "^4.0.0"

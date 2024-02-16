@@ -1,18 +1,25 @@
 import { marked } from 'marked';
+import markedFootnote from 'marked-footnote'
+import { markedSmartypants } from "marked-smartypants";
 import { transform } from 'ultrahtml';
+import sanitize from 'ultrahtml/transformers/sanitize';
 import { jsx as h } from 'astro/jsx-runtime';
 import { renderJSX } from 'astro/runtime/server/jsx';
 import { __unsafeHTML } from 'ultrahtml';
 import * as entities from "entities";
+import swap from 'ultrahtml/transformers/swap';
 
 
-export function createComponentProxy(result, _components: Record<string, any> = {}) {
+export function createComponentProxy(
+  result: any, 
+  _components: Record<string, any> = {},
+  ) {
   const components = {};
   for (const [key, value] of Object.entries(_components)) {
     if (typeof value === 'string') {
       components[key] = value;
     } else {
-      components[key] = async (props, children) => {
+      components[key] = async (props: Record<string, any>, children: { value: any; }) => {
         if (key === 'CodeBlock' || key === 'CodeSpan') {
           props.code = entities.decode(JSON.parse(`"${props.code}"`));
         }
@@ -69,7 +76,7 @@ export async function markdown(
       }
     }
     if ('Heading' in opts.components) {
-      renderer.heading = (children: string, level: number, raw: string, slugger) => {
+      renderer.heading = (children: string, level: number, raw: string, slugger: { slug: (arg0: string) => any; }) => {
         const slug = slugger.slug(raw);
         return `<Heading as="h${level}" href="#${slug}" text="${raw}">${children}</Heading>`
       }
@@ -89,25 +96,25 @@ export async function markdown(
       }
     }
   }
-  marked.use({
-    gfm: true,
-    smartypants: true,
-    renderer
-  })
+  marked.use(markedSmartypants(), markedFootnote(), {
+      gfm: true,
+      renderer
+    })
   const content = await marked.parse(dedent(input));
 
-  return transform(content, {
-    sanitize: opts.sanitize,
-    components: opts.components,
-  });
+  return transform(content, [
+    sanitize(opts.sanitize),
+    swap(opts.components),
+  ]);
 }
 
 export async function html(
   input: string,
   opts: HTMLOptions = {}
 ): Promise<string> {
-  return transform(dedent(input), {
-    sanitize: opts.sanitize,
-    components: opts.components,
-  });
+  return transform(dedent(input), [
+    sanitize(opts.sanitize),
+    swap(opts.components)
+  ]
+  );
 }
