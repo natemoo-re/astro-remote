@@ -20,7 +20,8 @@
   },
   "homepage": "https://github.com/natemoo-re/astro-remote#readme",
   "volta": {
-    "node": "18.19.0"
+    "node": "18.19.0",
+    "pnpm": "8.14.1"
   },
   "engines": {
     "node": ">=18.19.0"
