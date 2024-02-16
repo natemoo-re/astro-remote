@@ -8,16 +8,15 @@ importers:
 
   .:
     dependencies:
+      '@biomejs/biome':
+        specifier: 1.5.3
+        version: 1.5.3
       '@changesets/changelog-github':
         specifier: ^0.5.0
         version: 0.5.0
       '@changesets/cli':
         specifier: ^2.27.1
         version: 2.27.1
-    devDependencies:
-      '@biomejs/biome':
-        specifier: 1.5.3
-        version: 1.5.3
       prettier:
         specifier: ^3.2.5
         version: 3.2.5
@@ -31,10 +30,10 @@ importers:
         specifier: ^12.0.0
         version: 12.0.0
       marked-footnote:
-        specifier: 1.2.2
+        specifier: ^1.2.2
         version: 1.2.2(marked@12.0.0)
       marked-smartypants:
-        specifier: 1.1.6
+        specifier: ^1.1.6
         version: 1.1.6(marked@12.0.0)
       ultrahtml:
         specifier: ^1.5.2
@@ -412,7 +411,7 @@ packages:
       '@biomejs/cli-linux-x64-musl': 1.5.3
       '@biomejs/cli-win32-arm64': 1.5.3
       '@biomejs/cli-win32-x64': 1.5.3
-    dev: true
+    dev: false
 
   /@biomejs/cli-darwin-arm64@1.5.3:
     resolution: {integrity: sha512-ImU7mh1HghEDyqNmxEZBoMPr8SxekkZuYcs+gynKlNW+TALQs7swkERiBLkG9NR0K1B3/2uVzlvYowXrmlW8hw==}
@@ -420,7 +419,7 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
-    dev: true
+    dev: false
     optional: true
 
   /@biomejs/cli-darwin-x64@1.5.3:
@@ -429,7 +428,7 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
-    dev: true
+    dev: false
     optional: true
 
   /@biomejs/cli-linux-arm64-musl@1.5.3:
@@ -438,7 +437,7 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
-    dev: true
+    dev: false
     optional: true
 
   /@biomejs/cli-linux-arm64@1.5.3:
@@ -447,7 +446,7 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
-    dev: true
+    dev: false
     optional: true
 
   /@biomejs/cli-linux-x64-musl@1.5.3:
@@ -456,7 +455,7 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
-    dev: true
+    dev: false
     optional: true
 
   /@biomejs/cli-linux-x64@1.5.3:
@@ -465,7 +464,7 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
-    dev: true
+    dev: false
     optional: true
 
   /@biomejs/cli-win32-arm64@1.5.3:
@@ -474,7 +473,7 @@ packages:
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
-    dev: true
+    dev: false
     optional: true
 
   /@biomejs/cli-win32-x64@1.5.3:
@@ -483,7 +482,7 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
-    dev: true
+    dev: false
     optional: true
 
   /@changesets/apply-release-plan@7.0.0:
@@ -3509,6 +3508,7 @@ packages:
     resolution: {integrity: sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==}
     engines: {node: '>=14'}
     hasBin: true
+    dev: false
 
   /prismjs@1.29.0:
     resolution: {integrity: sha512-Kx/1w86q/epKcmte75LNrEoT+lX8pBpavuAbvJWRXar7Hz8jrtF+e3vY751p0R8H9HdArwaCTNDDzHg/ScJK1Q==}
