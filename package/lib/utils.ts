@@ -98,7 +98,6 @@ export async function markdown(
     }
   }
   marked.use(markedSmartypants(), markedFootnote(), ...markedExtenstion, {
-    async: true,
     gfm: true,
     renderer
   })

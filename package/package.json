@@ -46,12 +46,11 @@
   "dependencies": {
     "entities": "^4.5.0",
     "marked": "^12.0.0",
-    "marked-footnote": "1.2.2",
-    "marked-smartypants": "1.1.6",
+    "marked-footnote": "^1.2.2",
+    "marked-smartypants": "^1.1.6",
     "ultrahtml": "^1.5.2"
   },
   "devDependencies": {
-    "astro": "^4.0.0",
-    "@types/dompurify": "3.0.5"
+    "astro": "^4.0.0"
   }
 }
