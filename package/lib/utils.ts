@@ -1,4 +1,4 @@
-import { marked } from 'marked';
+import { marked, type MarkedExtension } from 'marked';
 import markedFootnote from 'marked-footnote'
 import { markedSmartypants } from "marked-smartypants";
 import { transform } from 'ultrahtml';
@@ -58,7 +58,8 @@ export interface HTMLOptions {
 
 export async function markdown(
   input: string,
-  opts: HTMLOptions = {}
+  opts: HTMLOptions = {},
+  markedExtenstion: MarkedExtension[] = []
 ): Promise<string> {
   const renderer: any = {}
   if (opts.components) {
@@ -96,7 +97,7 @@ export async function markdown(
       }
     }
   }
-  marked.use(markedSmartypants(), markedFootnote(), {
+  marked.use(markedSmartypants(), markedFootnote(), ...markedExtenstion, {
       gfm: true,
       renderer
     })
