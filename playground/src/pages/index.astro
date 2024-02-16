@@ -38,30 +38,15 @@ const readme2 = await fetch("https://raw.githubusercontent.com/natemoo-re/astro-
   </head>
   <body>
     <div class="markup">
-      <h1>Test: Markup(HTML Parse and write)</h1>
-      <Markup
-        content={example}
-        sanitize={{
-		  dropElements: ["head","style"],
-          blockElements: ["html", "body", "div"],
-        }}
-      />
-    </div>
-
-    <div class="markdown">
-      <h1>Test: Markdown-Internal(MD Parse and write)</h1>
-      <Markdown
-        content={readme1}
-        components={{ Heading, CodeBlock, CodeSpan, Note }}
-      />
-    </div>
-
-    <div class="markdown">
-      <h1>Test: Markdown-External(MD Parse and write)</h1>
-      <Markdown
-        content={readme2}
-        components={{ Heading, CodeBlock, CodeSpan, Note }}
-      />
-    </div>
+      <h1>Tests:</h1>
+	  <h2>Local:</h2>
+		<ul>
+			<li><a href="/test-md-local">Test Local Markdown "< Markdown >"</a></li>
+		</ul>
+	  <h2>Remote:</h2>
+		<ul>
+			<li><a href="/test-html">Test Remote HTML "< Markup >"</a></li>
+			<li><a href="/test-md-remote">Test Remote Markdown "< Markdown >"</a></li>
+		</ul>
   </body>
 </html>
