@@ -1,15 +1,19 @@
-import { jsx as h } from "astro/jsx-runtime";
 /**@ts-expect-error */
 import { renderJSX } from "astro/runtime/server/jsx";
-import * as entities from "entities";
+import { jsx as h } from "astro/jsx-runtime";
+
+import { transform } from "ultrahtml";
+/**@ts-expect-error */ 
+//This Will get removed once the export is fixed. still works with error!
+import { __unsafeHTML } from "ultrahtml";
+import sanitize from "ultrahtml/transformers/sanitize";
+import swap from "ultrahtml/transformers/swap";
+
 import { type MarkedExtension, marked } from "marked";
 import markedFootnote from "marked-footnote";
 import { markedSmartypants } from "marked-smartypants";
-import { transform } from "ultrahtml";
-/**@ts-expect-error */ //This Will get removed once the export is fixed.  still works with error!
-import { __unsafeHTML } from "ultrahtml";
-import sanitize, { type SanitizeOptions } from "ultrahtml/transformers/sanitize";
-import swap from "ultrahtml/transformers/swap";
+
+import * as entities from "entities";
 
 export function createComponentProxy(
 	result: any,
@@ -56,8 +60,8 @@ export function dedent(str: string): string {
 }
 
 export interface HTMLOptions {
-	sanitize?: SanitizeOptions;
-	components?: Record<string, any>;
+	sanitize?: Record<string, never>;
+	components?: Record<string, never>;
 }
 
 export async function markdown(
@@ -88,7 +92,7 @@ export async function markdown(
 				slugger: { slug: (arg0: string) => any },
 			) => {
 				//const slug = slugger.slug(raw);
-				// href="#${slug}"
+				//  href="#${slug}"
 				return `<Heading as="h${level}" text="${raw}">${children}</Heading>`;
 			};
 		}
@@ -116,7 +120,7 @@ export async function markdown(
 	const content = await marked.parse(dedent(input));
 	return transform(content, [
 		swap(opts.components),
-		// sanitize(opts.sanitize) - this was causing issues with Markdown output disabled for now.
+		//sanitize(opts.sanitize) //- this was causing issues with Markdown output disabled for now.
 	]);
 }
 
