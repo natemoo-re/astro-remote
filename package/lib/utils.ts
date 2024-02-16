@@ -60,8 +60,8 @@ export function dedent(str: string): string {
 }
 
 export interface HTMLOptions {
-	sanitize?: Record<string, never>;
-	components?: Record<string, never>;
+	sanitize?: Record<string, any>;
+	components?: Record<string, any>;
 }
 
 export async function markdown(
@@ -129,7 +129,7 @@ export async function html(
 	opts: HTMLOptions = {},
 ): Promise<string> {
 	return transform(dedent(input), [
-		swap(opts.components),
 		sanitize(opts.sanitize),
+		swap(opts.components),
 	]);
 }
