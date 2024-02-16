@@ -2,13 +2,12 @@ import { marked, type MarkedExtension } from 'marked';
 import markedFootnote from 'marked-footnote'
 import { markedSmartypants } from "marked-smartypants";
 import { transform } from 'ultrahtml';
+import { __unsafeHTML } from 'ultrahtml';
 import sanitize from 'ultrahtml/transformers/sanitize';
+import swap from 'ultrahtml/transformers/swap';
 import { jsx as h } from 'astro/jsx-runtime';
 import { renderJSX } from 'astro/runtime/server/jsx';
-import { __unsafeHTML } from 'ultrahtml';
 import * as entities from "entities";
-import swap from 'ultrahtml/transformers/swap';
-
 
 export function createComponentProxy(
   result: any, 
@@ -78,8 +77,9 @@ export async function markdown(
     }
     if ('Heading' in opts.components) {
       renderer.heading = (children: string, level: number, raw: string, slugger: { slug: (arg0: string) => any; }) => {
-        const slug = slugger.slug(raw);
-        return `<Heading as="h${level}" href="#${slug}" text="${raw}">${children}</Heading>`
+        //const slug = slugger.slug(raw);
+        // href="#${slug}"
+        return `<Heading as="h${level}" text="${raw}">${children}</Heading>`
       }
     }
     if ('CodeBlock' in opts.components) {
@@ -98,14 +98,14 @@ export async function markdown(
     }
   }
   marked.use(markedSmartypants(), markedFootnote(), ...markedExtenstion, {
-      gfm: true,
-      renderer
-    })
+    async: true,
+    gfm: true,
+    renderer
+  })
   const content = await marked.parse(dedent(input));
-
   return transform(content, [
-    sanitize(opts.sanitize),
     swap(opts.components),
+    // sanitize(opts.sanitize) this was causing issues with Markdown disabled for now.
   ]);
 }
 
@@ -114,8 +114,8 @@ export async function html(
   opts: HTMLOptions = {}
 ): Promise<string> {
   return transform(dedent(input), [
-    sanitize(opts.sanitize),
-    swap(opts.components)
+    swap(opts.components),
+    sanitize(opts.sanitize)
   ]
   );
 }

@@ -51,6 +51,7 @@
     "ultrahtml": "^1.5.2"
   },
   "devDependencies": {
-    "astro": "^4.0.0"
+    "astro": "^4.0.0",
+    "@types/dompurify": "3.0.5"
   }
 }
