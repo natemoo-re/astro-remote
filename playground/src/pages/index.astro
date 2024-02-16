@@ -1,16 +1,67 @@
 ---
+import { Markdown, Markup } from "astro-remote";
+import CodeSpan from "../components/CodeSpan.astro";
+import CodeBlock from "../components/CodeBlock.astro";
+import Heading from "../components/Heading.astro";
+import Note from "../components/Note.astro";
 
+const example = await fetch("https://example.com/").then((res) => res.text());
+const readme1 = `
+# Hello \`world\`
+
+> **Note**
+> Some note
+
+> **Warning**
+> Some warning
+
+"Nice" [^1]
+
+\`<What>\`
+
+\`inline\`
+
+\`\`\`html filename="cool"
+<div>Hello world!</div>
+\`\`\`
+
+[^1]: A footnote on the label: "1".
+`;
+const readme2 = await fetch("https://raw.githubusercontent.com/natemoo-re/astro-remote/main/packages/astro-remote/README.md").then((res) => res.text());
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Astro</title>
+  </head>
+  <body>
+    <div class="markup">
+      <h1>Test: Markup(HTML Parse and write)</h1>
+      <Markup
+        content={example}
+        sanitize={{
+		  dropElements: ["head","style"],
+          blockElements: ["html", "body", "div"],
+        }}
+      />
+    </div>
+
+    <div class="markdown">
+      <h1>Test: Markdown-Internal(MD Parse and write)</h1>
+      <Markdown
+        content={readme1}
+        components={{ Heading, CodeBlock, CodeSpan, Note }}
+      />
+    </div>
+
+    <div class="markdown">
+      <h1>Test: Markdown-External(MD Parse and write)</h1>
+      <Markdown
+        content={readme2}
+        components={{ Heading, CodeBlock, CodeSpan, Note }}
+      />
+    </div>
+  </body>
 </html>
