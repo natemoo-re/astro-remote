@@ -1,10 +1,7 @@
 /**@ts-expect-error */
 import { renderJSX } from "astro/runtime/server/jsx";
 import { jsx as h } from "astro/jsx-runtime";
-
 import { transform } from "ultrahtml";
-/**@ts-expect-error */ 
-//This Will get removed once the export is fixed. still works with error!
 import { __unsafeHTML } from "ultrahtml";
 import sanitize from "ultrahtml/transformers/sanitize";
 import swap from "ultrahtml/transformers/swap";
