@@ -1,1 +1,1 @@
-./package/README.md
+./packages/astro-remote/README.md
