@@ -10,7 +10,7 @@
     "astro": "astro"
   },
   "volta": {
-    "extends": "../package.json"
+    "extends": "../../package.json"
   },
   "devDependencies": {
     "astro-remote": "workspace:*"
@@ -18,6 +18,7 @@
   "dependencies": {
     "astro": "^4.4.0",
     "@astrojs/check": "^0.5.4",
+    "marked-alert": "2.0.1",
     "typescript": "^5.3.3"
   }
 }

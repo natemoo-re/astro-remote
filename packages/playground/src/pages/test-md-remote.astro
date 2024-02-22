@@ -4,29 +4,9 @@ import CodeSpan from "../components/CodeSpan.astro";
 import CodeBlock from "../components/CodeBlock.astro";
 import Heading from "../components/Heading.astro";
 import Note from "../components/Note.astro";
+import markedAlert from 'marked-alert'
 
-const readme = `
-# Hello \`world\`
-
-> **Note**
-> Some note
-
-> **Warning**
-> Some warning
-
-"Nice" [^1]
-
-\`<What>\`
-
-\`inline\`
-
-\`\`\`html filename="cool"
-<div>Hello world!</div>
-\`\`\`
-
-[^1]: A footnote on the label: "1".
-`;
-
+const readme = await fetch("https://raw.githubusercontent.com/natemoo-re/astro-remote/main/packages/astro-remote/README.md").then((res) => res.text());
 ---
 
 <html lang="en">
@@ -36,16 +16,14 @@ const readme = `
     <title>Astro</title>
   </head>
   <body>
-
-
     <div class="markdown">
-      <h1>Test: Markdown-Internal(MD Parse and write)</h1>
-      <p>Test Generated from: "Internal Defined Markdown"</p>
-      <Markdown
-        content={readme}
+      <h1>Test: Markdown-External(MD Parse and write)</h1>
+      <p>Test Generated from: "https://raw.githubusercontent.com/natemoo-re/astro-remote/main/packages/astro-remote/README.md"</p>
+      <Markdown sanitize={{ allowComponents: true }}
+        content={readme} 
         components={{ Heading, CodeBlock, CodeSpan, Note }}
+        marked={{extensions: [markedAlert()]}}
       />
     </div>
-
   </body>
 </html>

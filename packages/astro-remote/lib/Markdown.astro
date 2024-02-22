@@ -7,7 +7,9 @@ export interface Props {
   content?: string;
   sanitize?: SanitizeOptions;
   components?: Record<string, any>;
-  markedExt?: MarkedExtension[]
+  marked?: {
+    extensions?: MarkedExtension[]
+  }
 }
 
 const input = Astro.props.content ?? await Astro.slots.render('default');
@@ -16,7 +18,7 @@ if (!input) {
 }
 // @ts-ignore
 const components = createComponentProxy($$result, Astro.props.components);
-const content = await markdown(input, { components }, Astro.props.markedExt);
+const content = await markdown(input, { sanitize: Astro.props.sanitize, components }, Astro.props.marked?.extensions);
 ---
 
 <Fragment set:html={content} />

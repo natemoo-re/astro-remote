@@ -165,3 +165,19 @@ const content = await fetch('http://my-site.com/api/v1/post').then(res => res.te
 
 <Markdown content={content} sanitize={{ allowComponents: true }} components={{ MyCustomComponent }} />
 ```
+
+### Using Marked Extensions
+
+If you'd like to use custom Marked Extensions it is now as easy as doing the following:
+
+```astro
+---
+import { Markdown } from 'astro-remote';
+import MyCustomComponent from '../components/MyCustomComponent.astro';
+import markedAlert from 'marked-alert'
+
+const content = await fetch('http://my-site.com/api/v1/post').then(res => res.text());
+---
+
+<Markdown content={content} sanitize={{ allowComponents: true }} components={{ MyCustomComponent }} marked={{ extensions: [ markedAlert() ] }} />
+```

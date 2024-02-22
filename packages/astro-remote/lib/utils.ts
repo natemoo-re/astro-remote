@@ -117,7 +117,7 @@ export async function markdown(
 	const content = await marked.parse(dedent(input));
 	return transform(content, [
 		swap(opts.components),
-		//sanitize(opts.sanitize) //- this was causing issues with Markdown output disabled for now.
+		sanitize(opts.sanitize),
 	]);
 }
 

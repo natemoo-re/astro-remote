@@ -1,21 +1,23 @@
 ---
-"astro-remote": major
+"astro-remote": minor
 ---
 
 This Update will bring all Dependencies to current versions as well as resolve some typing issues with new versions
 
+New:
+- Now Support Marked Extensions using the following example:
+    ```tsx
+    ---
+    import markedAlert from 'marked-alert'
+    const readme = await fetch("https://raw.githubusercontent.com/natemoo-re/astro-remote/main/packages/astro-remote/README.md").then((res) => res.text());
+    ---
+    <Markdown sanitize={{ allowComponents: true }}
+        content={readme} 
+        components={{ Heading, CodeBlock, CodeSpan, Note }}
+        marked={{extensions: [markedAlert()]}} />
+    ```
+
+
 Breaking:
-- Markdown sanitation has been disabled due to complete removal of all custom data (Hope to resolve soon, but the current workaround is functioning)
+- Node Engine Minimum required version: v18.14.1 this reflects Astro's Minimum requirements. (https://docs.astro.build/en/tutorial/1-setup/1/#nodejs)
 
-Commit history:
-
-- Initial Prep: Repo organization and Prepare for upgrade
-- More Cleanup: Code Cleanup before I started Upgrading
-- Some Progress: First Commit to include upgrade progress, mostly upgrading of Deps before any testing and fixing
-- Code Cleanup: Initial cleanup of code errors
-- Working Tests: Time to work out bugs and get things working
-- Test Cleanup: Tests are working and most previous features have been fixed.
-- More Cleanup: remove all deps used for testing different results and their code
-- Fix Inital Type Errors left behind and lint!
-- Readme update: updated readme now that all the errors are gone.
-- small fix to Utils file
