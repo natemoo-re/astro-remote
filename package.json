@@ -21,12 +21,12 @@
   "homepage": "https://github.com/natemoo-re/astro-remote#readme",
   "volta": {
     "node": "18.19.0",
-    "pnpm": "8.14.1"
+    "pnpm": "8.15.3"
   },
   "engines": {
     "node": ">=18.19.0"
   },
-  "packageManager": "pnpm@8.14.1",
+  "packageManager": "pnpm@8.15.3",
   "dependencies": {
     "@biomejs/biome": "1.5.3",
     "prettier": "^3.2.5",
