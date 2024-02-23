@@ -4,9 +4,37 @@ import { createComponentProxy, markdown } from './utils';
 import type { MarkedExtension } from 'marked';
 
 export interface Props {
+  /** The markdown content to be rendered. If not provided, the content will be taken from the default slot.
+   * @example
+   * 
+      <Markdown 
+        content={MarkdownContent} 
+      />
+   */
   content?: string;
+  /** Allows the user to define custom SanitizeOptions to be used when rendering the markdown.
+   * @example
+   * 
+      <Markdown 
+        sanitize={{ allowComponents: true }}
+      />
+   */
   sanitize?: SanitizeOptions;
+  /** Allows the user to pass in custom components to be used when rendering the markdown.
+   * @example
+   * 
+      <Markdown 
+        components={{ Heading, CodeBlock, CodeSpan, Note }}
+      />
+   */
   components?: Record<string, any>;
+  /** Allows usage of Marked extensions to use when rendering the markdown.
+   * @example
+   * 
+      <Markdown 
+        marked={{extensions: [MarkedExtnesion1(), MarkedExtnesion2(), MarkedExtnesion3()]}} 
+      />
+   */
   marked?: {
     extensions?: MarkedExtension[]
   }

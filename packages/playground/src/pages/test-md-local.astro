@@ -45,7 +45,8 @@ const readme = `
     <div class="markdown">
       <h1>Test: Markdown-Internal(MD Parse and write)</h1>
       <p>Test Generated from: "Internal Defined Markdown"</p>
-      <Markdown sanitize={{ allowComponents: true }}
+      <Markdown
+        sanitize={{ allowComponents: true }}
         content={readme} 
         components={{ Heading, CodeBlock, CodeSpan, Note }}
         marked={{extensions: [markedAlert()]}} />

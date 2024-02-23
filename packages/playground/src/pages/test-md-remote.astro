@@ -19,7 +19,8 @@ const readme = await fetch("https://raw.githubusercontent.com/natemoo-re/astro-r
     <div class="markdown">
       <h1>Test: Markdown-External(MD Parse and write)</h1>
       <p>Test Generated from: "https://raw.githubusercontent.com/natemoo-re/astro-remote/main/packages/astro-remote/README.md"</p>
-      <Markdown sanitize={{ allowComponents: true }}
+      <Markdown 
+        sanitize={{ allowComponents: true }}
         content={readme} 
         components={{ Heading, CodeBlock, CodeSpan, Note }}
         marked={{extensions: [markedAlert()]}}

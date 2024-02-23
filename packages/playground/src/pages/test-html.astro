@@ -18,7 +18,7 @@ const example = await fetch("https://example.com/").then((res) => res.text());
       <Markup
         content={example}
         sanitize={{
-		  dropElements: ["head","style"],
+		      dropElements: ["head","style"],
           blockElements: ["html", "body", "div"],
         }}
       />
