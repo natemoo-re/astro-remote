@@ -1,5 +1,8 @@
 # Astro Remote
 
+[![NPM Version](https://img.shields.io/npm/v/astro-remote)](https://npm.im/astro-remote)
+
+
 Render remote HTML or Markdown content in Astro with full control over the output.
 
 Powered by [`ultrahtml`](https://github.com/natemoo-re/ultrahtml) and [`marked`](https://github.com/markedjs/marked).
