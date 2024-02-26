@@ -4,6 +4,14 @@ Render remote HTML or Markdown content in Astro with full control over the outpu
 
 Powered by [`ultrahtml`](https://github.com/natemoo-re/ultrahtml) and [`marked`](https://github.com/markedjs/marked).
 
+## Install
+
+```sh
+npm install astro-remote
+pnpm install astro-remote
+yarn install astro-remote
+```
+
 ## Rendering Remote Content
 
 The most basic function of `astro-remote` is to convert a string of HTML or Markdown to HTML. Use the `Markup` and `Markdown` components depending on your input.
@@ -20,16 +28,22 @@ const { html, markdown } = await fetch('http://my-site.com/api/v1/post').then(re
 
 ### Sanitization
 
-By default, all content will be sanitized with sensible defaults (`script` blocks are dropped). This can be controlled using the [`SanitizeOptions`](https://github.com/natemoo-re/ultrahtml/blob/71e723f6093abea2584c9ea3bfecc0ce68d02d8d/src/index.ts#L251-L268) available in `ultrahtml`. Set to `false` to disable sanitization.
+By default, all HTML content will be sanitized with sensible defaults (`script` blocks are dropped). This can be controlled using the [`SanitizeOptions`](https://github.com/natemoo-re/ultrahtml/blob/71e723f6093abea2584c9ea3bfecc0ce68d02d8d/src/index.ts#L251-L268) available in `ultrahtml`. Set to `false` to disable sanitization.
 
 ```astro
 ---
-import { Markdown } from 'astro-remote';
+import { Markup } from 'astro-remote';
 const content = await fetch('http://my-site.com/api/v1/post').then(res => res.text());
 ---
 
-<!-- Disallow inline `style` attributes, but allow HTML comments -->
-<Markdown content={content} sanitize={{ dropAttributes: { "style": ["*"] }, allowComments: true }} />
+<!-- Disallow `head` and `style` attributes, and standard formatting from host website -->
+<Markup 
+    content={content} 
+    sanitize={{ 
+        dropElements: ["head","style"], 
+        blockElements: ["html", "body", "div"],
+    }} 
+/>
 ```
 
 ### Customization
@@ -38,12 +52,13 @@ Both `Markup` and `Markdown` allow full control over the rendering of output. Th
 
 ```astro
 ---
-import { Markdown } from 'astro-remote';
+import { Markdown, Markup } from 'astro-remote';
 import Title from '../components/Title.astro';
 const content = await fetch('http://my-site.com/api/v1/post').then(res => res.text());
 ---
 
 <!-- Render <h1> as custom <Title> component -->
+<Markup content={content} components={{ h1: Title }} />
 <Markdown content={content} components={{ h1: Title }} />
 ```
 
@@ -149,4 +164,19 @@ const content = await fetch('http://my-site.com/api/v1/post').then(res => res.te
 ---
 
 <Markdown content={content} sanitize={{ allowComponents: true }} components={{ MyCustomComponent }} />
+```
+
+### Using Marked Extensions
+
+If you'd like to extend the underlying [Marked](https://marked.js.org/using_pro) behavior, the `marked` prop accepts `extensions`.
+
+```astro
+---
+import { Markdown } from 'astro-remote';
+import markedAlert from 'marked-alert'
+
+const content = await fetch('http://my-site.com/api/v1/post').then(res => res.text());
+---
+
+<Markdown content={content} marked={{ extensions: [ markedAlert() ] }} />
 ```

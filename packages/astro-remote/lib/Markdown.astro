@@ -1,11 +1,43 @@
 ---
-import type { SanitizeOptions } from 'ultrahtml'
+import type { SanitizeOptions } from 'ultrahtml/transformers/sanitize'
 import { createComponentProxy, markdown } from './utils';
+import type { MarkedExtension } from 'marked';
 
 export interface Props {
+  /** The markdown content to be rendered. If not provided, the content will be taken from the default slot.
+   * @example
+   * 
+      <Markdown 
+        content={MarkdownContent} 
+      />
+   */
   content?: string;
+  /** Allows the user to define custom SanitizeOptions to be used when rendering the markdown.
+   * @example
+   * 
+      <Markdown 
+        sanitize={{ allowComponents: true }}
+      />
+   */
   sanitize?: SanitizeOptions;
+  /** Allows the user to pass in custom components to be used when rendering the markdown.
+   * @example
+   * 
+      <Markdown 
+        components={{ Heading, CodeBlock, CodeSpan, Note }}
+      />
+   */
   components?: Record<string, any>;
+  /** Allows usage of Marked extensions to use when rendering the markdown.
+   * @example
+   * 
+      <Markdown 
+        marked={{extensions: [MarkedExtension1(), MarkedExtension2(), MarkedExtension3()]}} 
+      />
+   */
+  marked?: {
+    extensions?: MarkedExtension[]
+  }
 }
 
 const input = Astro.props.content ?? await Astro.slots.render('default');
@@ -14,7 +46,7 @@ if (!input) {
 }
 // @ts-ignore
 const components = createComponentProxy($$result, Astro.props.components);
-const content = await markdown(input, { sanitize: Astro.props.sanitize, components });
+const content = await markdown(input, { sanitize: Astro.props.sanitize, components }, Astro.props.marked?.extensions);
 ---
 
 <Fragment set:html={content} />

@@ -1,10 +1,31 @@
 ---
-import type { SanitizeOptions } from 'ultrahtml'
+import type { SanitizeOptions } from 'ultrahtml/transformers/sanitize'
 import { createComponentProxy, html } from './utils';
 
 export interface Props {
+  /** The HTML content to be rendered. If not provided, the content will be taken from the default slot.
+   * @example
+   * 
+      <Markup 
+        content={HTMLContent} 
+      />
+   */
   content?: string;
+  /** Allows the user to define custom SanitizeOptions to be used when rendering the HTML.
+   * @example
+   * 
+      <Markup 
+        sanitize={{ allowComponents: true }}
+      />
+   */
   sanitize?: SanitizeOptions;
+  /** Allows the user to pass in custom components to be used when rendering the HTML.
+   * @example
+   * 
+      <Markup 
+        components={{ Heading, CodeBlock, CodeSpan, Note }}
+      />
+   */
   components?: Record<string, any>;
 }
 

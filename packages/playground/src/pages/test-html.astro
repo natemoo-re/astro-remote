@@ -1,0 +1,28 @@
+---
+import { Markup } from "astro-remote";
+
+const example = await fetch("https://example.com/").then((res) => res.text());
+
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Astro</title>
+  </head>
+  <body>
+    <div class="markup">
+      <h1>Test: Markup(HTML Parse and write)</h1>
+      <p>Test Generated from: "https://example.com"</p>
+      <Markup
+        content={example}
+        sanitize={{
+		      dropElements: ["head","style"],
+          blockElements: ["html", "body", "div"],
+        }}
+      />
+    </div>
+
+  </body>
+</html>
