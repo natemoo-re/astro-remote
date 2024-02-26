@@ -44,15 +44,14 @@ function getIndent(ln: string): string {
 }
 
 export function dedent(str: string): string {
-	const lns = str.replace(/^[\r\n]+/, "").split("\n");
-	let indent = getIndent(lns[0]);
-	if (indent.length === 0 && lns.length > 1) {
-		indent = getIndent(lns[1]);
-	}
-	return lns
-		.map((ln) => (ln.startsWith(indent) ? ln.slice(indent.length) : ln))
-		.map((ln, i, { length }) => (i === length - 1 ? ln.trim() : ln))
-		.join("\n");
+    const lns = str.replace(/^[\r\n]+/, "").split("\n");
+    let indent = getIndent(lns[0]);
+    if (indent.length === 0 && lns.length > 1) {
+        indent = getIndent(lns[1]);
+    }
+    return lns
+        .map((ln) => (indent.length > 1 && ln.startsWith(indent) ? ln.slice(indent.length) : ln))
+        .join("\n");
 }
 
 export interface HTMLOptions {
