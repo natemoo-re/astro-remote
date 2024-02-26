@@ -173,7 +173,6 @@ If you'd like to extend the underlying [Marked](https://marked.js.org/using_pro)
 ```astro
 ---
 import { Markdown } from 'astro-remote';
-import MyCustomComponent from '../components/MyCustomComponent.astro';
 import markedAlert from 'marked-alert'
 
 const content = await fetch('http://my-site.com/api/v1/post').then(res => res.text());
