@@ -168,7 +168,7 @@ const content = await fetch('http://my-site.com/api/v1/post').then(res => res.te
 
 ### Using Marked Extensions
 
-If you'd like to use custom Marked Extensions it is now as easy as doing the following:
+If you'd like to extend the underlying [Marked](https://marked.js.org/using_pro) behavior, the `marked` prop accepts `extensions`.
 
 ```astro
 ---
