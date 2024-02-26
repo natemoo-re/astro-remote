@@ -179,5 +179,5 @@ import markedAlert from 'marked-alert'
 const content = await fetch('http://my-site.com/api/v1/post').then(res => res.text());
 ---
 
-<Markdown content={content} sanitize={{ allowComponents: true }} components={{ MyCustomComponent }} marked={{ extensions: [ markedAlert() ] }} />
+<Markdown content={content} marked={{ extensions: [ markedAlert() ] }} />
 ```
