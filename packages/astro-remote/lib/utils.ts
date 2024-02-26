@@ -1,8 +1,7 @@
 /**@ts-expect-error */
 import { renderJSX } from "astro/runtime/server/jsx";
 import { jsx as h } from "astro/jsx-runtime";
-import { transform } from "ultrahtml";
-import { __unsafeHTML } from "ultrahtml";
+import { transform, __unsafeHTML } from "ultrahtml";
 import sanitize from "ultrahtml/transformers/sanitize";
 import swap from "ultrahtml/transformers/swap";
 
