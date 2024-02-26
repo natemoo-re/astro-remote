@@ -1,5 +1,11 @@
 # astro-remote
 
+## 0.3.1
+
+### Patch Changes
+
+- 643ea6f: Updates the README to include a link to NPM
+
 ## 0.3.0
 
 ### Minor Changes
