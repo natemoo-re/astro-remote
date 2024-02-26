@@ -2,22 +2,24 @@
 "astro-remote": minor
 ---
 
-This Update will bring all Dependencies to current versions as well as resolve some typing issues with new versions
+This release updates all dependencies and resolves some typing issues.
 
-New:
-- Now Support Marked Extensions using the following example:
-    ```tsx
+**New Features**
+
+- [Marked](https://marked.js.org/using_pro) extensions are now supported via the `marked` prop.
+
+    ```astro
     ---
     import markedAlert from 'marked-alert'
     const readme = await fetch("https://raw.githubusercontent.com/natemoo-re/astro-remote/main/packages/astro-remote/README.md").then((res) => res.text());
     ---
-    <Markdown sanitize={{ allowComponents: true }}
-        content={readme} 
-        components={{ Heading, CodeBlock, CodeSpan, Note }}
-        marked={{extensions: [markedAlert()]}} />
+    <Markdown
+        content={readme}
+        marked={{ extensions: [markedAlert()] }}
+    />
     ```
 
+**Breaking Changes**
 
-Breaking:
-- Node Engine Minimum required version: v18.14.1 this reflects Astro's Minimum requirements. (https://docs.astro.build/en/tutorial/1-setup/1/#nodejs)
+- The minimum required Node version is now `v18.14.1` to align with Astro's [current requirements](https://docs.astro.build/en/tutorial/1-setup/1/#nodejs). This is enforced via an `engines` constraint.
 
