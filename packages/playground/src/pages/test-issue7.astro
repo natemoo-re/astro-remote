@@ -1,19 +1,10 @@
 ---
 import { Markdown } from "astro-remote";
 
-// Working as expected
-const c0 = `Most .`;
-
-// 1 space
-const c1 = `Most \\
-.`;
-
-// 2 spaces
-const c2 = `Most  \\
-.`;
-
-// Space at the end
-const c3 = `Most . `;
+const c0 = "Most .";
+const c1 = "Most \n.";
+const c2 = "Most  \n.";
+const c3 = "Most . ";
 
 const content = [c0, c1, c2, c3];
 ---
