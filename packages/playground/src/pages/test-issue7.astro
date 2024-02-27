@@ -1,0 +1,13 @@
+---
+import { Markdown } from "astro-remote";
+
+const c0 = "Most .";
+const c1 = "Most \n.";
+const c2 = "Most  \n.";
+const c3 = "Most . ";
+
+const content = [c0, c1, c2, c3];
+---
+<div>
+    {content.map((c) => <Markdown>{c}</Markdown>)}
+</div>
