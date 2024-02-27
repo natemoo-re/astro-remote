@@ -2,7 +2,7 @@
   "name": "astro-remote",
   "description": "Render remote HTML or Markdown content in Astro with full control over the output.",
   "type": "module",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/natemoo-re/astro-remote"
