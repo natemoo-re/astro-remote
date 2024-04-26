@@ -39,8 +39,8 @@ export function createComponentProxy(
 }
 
 function getIndent(ln: string): string {
-	if (ln.trim() === ln) return "";
-	return ln.slice(0, ln.length - ln.trim().length);
+	if (ln.trimStart() === ln) return "";
+	return ln.slice(0, ln.length - ln.trimStart().length);
 }
 
 export function dedent(str: string): string {
