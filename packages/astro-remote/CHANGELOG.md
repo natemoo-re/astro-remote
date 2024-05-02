@@ -1,5 +1,11 @@
 # astro-remote
 
+## 0.3.3
+
+### Patch Changes
+
+- 689c819: Fixes an issue with internal `getIndent` function used for spacing corrections for `Markdown`
+
 ## 0.3.2
 
 ### Patch Changes
