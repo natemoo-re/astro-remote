@@ -5,7 +5,7 @@ import { transform, __unsafeHTML } from "ultrahtml";
 import sanitize from "ultrahtml/transformers/sanitize";
 import swap from "ultrahtml/transformers/swap";
 
-import { type MarkedExtension, marked } from "marked";
+import { type MarkedExtension, Marked } from "marked";
 import markedFootnote from "marked-footnote";
 import { markedSmartypants } from "marked-smartypants";
 
@@ -109,11 +109,11 @@ export async function markdown(
 			};
 		}
 	}
-	marked.use(markedSmartypants(), markedFootnote(), ...markedExtenstion, {
+	const instance = new Marked(markedSmartypants(), markedFootnote(), ...markedExtenstion, {
 		gfm: true,
 		renderer,
 	});
-	const content = await marked.parse(dedent(input));
+	const content = await instance.parse(dedent(input));
 	return transform(content, [
 		swap(opts.components),
 		sanitize(opts.sanitize),
