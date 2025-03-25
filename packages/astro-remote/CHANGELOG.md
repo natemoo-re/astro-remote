@@ -1,5 +1,11 @@
 # astro-remote
 
+## 0.3.4
+
+### Patch Changes
+
+- e026603: Fixes a memory leak with `marked`. [Please see [issue 33](https://github.com/natemoo-re/astro-remote/issues/33) for more details].
+
 ## 0.3.3
 
 ### Patch Changes
