@@ -1,0 +1,22 @@
+---
+import { Markdown } from "astro-remote";
+
+const elements = Array.from(Array(100).keys())
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body>
+    <h1>Test for <a href="https://github.com/natemoo-re/astro-remote/issues/33" target="_blank">Issue #33</a></h1>
+
+    <ul>
+      {elements.map(element => <li><Markdown content={`**Element number ${element}** --> check build time`} /></li>)}
+    </ul>
+	</body>
+</html>
